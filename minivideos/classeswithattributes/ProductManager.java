@@ -4,6 +4,6 @@ public class ProductManager {
 
     public void add(Product product){
         //JDBC
-        System.out.println("Urun eklendi");
+        System.out.println("Urun eklendi" + product.getName());
     }
 }
