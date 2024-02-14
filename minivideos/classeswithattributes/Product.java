@@ -2,6 +2,21 @@ package classeswithattributes;
 
 public class Product {
 
+    public Product(){ //Parametresiz Constructor
+        System.out.println("Yapici blok calisti");
+    }
+
+    public Product(int id, String name, String description, double price, int stockAmount, String renk){
+        System.out.println("Yapici blok calisti"); //Parametreli Constructor
+        this.id=id;
+        this.renk=renk;
+        this.name=name;
+        this.price= price;
+        this.description=description;
+        this.stockAmount=stockAmount;
+
+    }
+
     //attribute-field
     private int id;
     private String name;
