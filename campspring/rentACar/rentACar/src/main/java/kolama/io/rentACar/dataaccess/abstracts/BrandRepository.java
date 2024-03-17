@@ -2,9 +2,8 @@ package kolama.io.rentACar.dataaccess.abstracts;
 
 import kolama.io.rentACar.entities.concretes.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface BrandRepository extends JpaRepository<Brand,Integer> {
-    List<Brand> getAll();
+@Repository
+public interface BrandRepository extends JpaRepository<Brand,Integer>{
 }

@@ -1,11 +1,14 @@
 package kolama.io.rentACar.business.concretes;
 
 import kolama.io.rentACar.business.abstracts.BrandService;
+import kolama.io.rentACar.business.requests.CreateBrandRequest;
+import kolama.io.rentACar.business.responses.GetAllBrandsResponse;
 import kolama.io.rentACar.dataaccess.abstracts.BrandRepository;
 import kolama.io.rentACar.entities.concretes.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class BrandManager implements BrandService {
@@ -16,8 +19,24 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public List<Brand> getAll() {
-        return brandRepository.findAll();
+    public List<GetAllBrandsResponse> getAll() {
+        List<Brand>brands = brandRepository.findAll();
+        List<GetAllBrandsResponse> brandsResponse= new ArrayList<GetAllBrandsResponse>();
+
+        for (Brand brand : brands){
+            GetAllBrandsResponse responseItem = new GetAllBrandsResponse();
+            responseItem.setId(brand.getId());
+            responseItem.setName(brand.getName());
+            brandsResponse.add(responseItem);
+        }
+        return brandsResponse;
     } //BrandServiceImpl da denilebiliyor
+
+    @Override
+    public void add(CreateBrandRequest createBrandRequest) {
+        Brand brand= new Brand();
+        brand.setName(createBrandRequest.getName());
+        this.brandRepository.save(brand);
+    }
 
 }
