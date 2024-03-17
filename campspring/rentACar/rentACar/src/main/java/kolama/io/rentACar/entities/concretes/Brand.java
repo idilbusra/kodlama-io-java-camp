@@ -11,9 +11,9 @@ import lombok.*;
 @Entity
 public class Brand {
 
-    @Id
+    @Id//PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id")//PK
     private int id;
     @Column(name = "name")
     private String name;
